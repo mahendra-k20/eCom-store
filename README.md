@@ -1,7 +1,13 @@
 # Laravel E-commerce Store
 
+
+**Status: In Development**
+
+**This project is currently under active development. Features may change frequently and the code may not yet be production-ready.**
+---
+
 ## Overview
-This project is a fully functional e-commerce application built with Laravel. It provides a scalable and secure foundation for building online stores, including features for product management, user authentication, shopping cart, and order processing. The system is designed with clean architecture and can be extended to support advanced e-commerce requirements such as payment integration, product reviews, and inventory management.
+This project will be a fully functional e-commerce application built with Laravel. It will serve as a scalable and secure foundation for online stores, featuring product management, user authentication, shopping cart, and order processing. The system will be designed with clean architecture and will be extendable to include advanced features such as payment integration, product reviews, and inventory management.
 
 ---
 
