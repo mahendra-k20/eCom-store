@@ -3,7 +3,7 @@
 
 **Status: In Development**
 
-**This project is currently under active development. Features may change frequently and the code may not yet be production-ready.**
+**<span style="color:red">This project is currently under active development. Features may change frequently and the code may not yet be production-ready.</span>**
 ---
 
 ## Overview
