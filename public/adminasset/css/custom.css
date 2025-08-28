@@ -1,1 +1,15 @@
 /* your styles go here */
+
+/* category dashboard starts */
+.category-section hr {
+    border-top: 1px solid #777;
+}
+@media screen and (min-width: 767px) {
+    .category-form input[type="text"] {
+        width: 400px;
+        height: 43px;
+        margin-right: 20px;
+        border-radius: 5px;
+    }
+}
+/* category dashboard ends */
