@@ -12,4 +12,50 @@
         border-radius: 5px;
     }
 }
+
+.category-table table {
+    width: 60%;
+    border-collapse: collapse;
+    background-color: #333;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.category-table th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    color: #fff;
+}
+
+.category-table th {
+    background-color: #db657461;
+    color: #ffffff;
+    text-align: left;
+}
+
+.category-table tr:nth-child(even) {
+    background-color: #444;
+}
+
+.category-table tr:hover {
+    background-color: #222;
+    transition: 0.3s;
+}
+
+.category-table th.serial,
+td.serial {
+    width: 20%;
+}
+.category-table th.category_delete,
+td.category_delete {
+    width: 30%;
+}
+
+.category-table th.category_name,
+td.category_name {
+    width: 50%;
+}
+
 /* category dashboard ends */
