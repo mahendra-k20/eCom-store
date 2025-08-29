@@ -18,7 +18,8 @@
                     <h2 class="h5 no-margin-bottom">Category</h2>
                 </div>
             </div>
-            @include('admin.cat-dashboard')
+            @include('admin.updateCat-dashboard')
+
         </div>
 
         <!-- Main dashboard-->
