@@ -57,5 +57,61 @@ td.category_delete {
 td.category_name {
     width: 50%;
 }
-
 /* category dashboard ends */
+
+/* add product dashboard starts */
+.product-form label,
+.product-form input,
+.product-form textarea {
+    color: #ddd !important;
+}
+
+.product-table table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #333;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.product-table th,
+td {
+    padding: 12px 15px;
+    border: 1px solid #dee2e6;
+    color: #fff;
+}
+
+.product-table th {
+    background-color: #db657461;
+    color: #ffffff;
+    text-align: left;
+}
+
+.product-table tr:hover {
+    background-color: #222;
+    transition: 0.3s;
+}
+
+.product-table .serial {
+    width: 7%;
+}
+.product-table .title {
+    width: 20%;
+}
+.product-table .price {
+    width: 12%;
+}
+.product-table .image {
+    width: 8%;
+}
+.pagination {
+    justify-content: center;
+}
+.product-table .title {
+    color: #fff !important;
+}
+.product-table td {
+    color: #ddd;
+}
+/* add product dashboard ends */
