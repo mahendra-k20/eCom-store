@@ -29,3 +29,11 @@ Route::get('admin/delete_category/{id}', [AdminController::class, 'delete_catego
 Route::get('admin/edit_category/{id}', [AdminController::class, 'edit_category'])->name('admin.edit_category')->middleware(['auth', 'admin']);
 
 Route::post('admin/update_category/{id}', [AdminController::class, 'update_category'])->name('admin.update_category')->middleware(['auth', 'admin']);
+
+Route::get('admin/add_product', [AdminController::class, 'add_product'])->name('admin.add_product')->middleware(['auth', 'admin']);
+
+Route::post('admin/upload_product', [AdminController::class, 'upload_product'])->name('admin.upload_product')->middleware(['auth', 'admin']);
+
+Route::get('admin/view_product', [AdminController::class, 'view_product'])->name('admin.view_product')->middleware(['auth', 'admin']);
+
+Route::get('admin/delete_product/{id}', [AdminController::class, 'delete_product'])->name('admin.delete_product')->middleware(['auth', 'admin']);
