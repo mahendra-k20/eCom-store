@@ -4,6 +4,12 @@
 </div>
 
 <div class="container product-table mt-5">
+    <form action="{{ route('admin.search_product') }}" method="GET" class="d-flex col-md-6 p-0 mb-5" role="search">
+        @csrf
+        <input type="text" class="text-light form-control me-2" id="search_product" name="search_product"
+            placeholder="Search..." required>
+        <input type="submit" class="btn btn-primary" value="Search">
+    </form>
     <table>
         <thead>
             <tr>
@@ -14,7 +20,7 @@
                 <th class="description">Description</th>
                 <th class="category">Category</th>
                 <th class="quantity">Quantity</th>
-                <th class="delete">Delete</th>
+                <th class="actions">Actions</th>
             </tr>
         </thead>
         <tbody>
@@ -30,14 +36,19 @@
                     <td class="title">{{ $products->title }}</td>
                     <td class="price">₹ {{ $products->price }} /-</td>
                     {{-- <td class="descripton">{{ substr($products->description, 0, 80) }}...</td> --}}
-                    <td class="descripton">{!! Str::limit($products->description, 80) !!}...</td>
+                    <td class="descripton">{!! Str::limit($products->description, 45) !!}...</td>
                     <td class="category">{{ $products->category }}</td>
                     <td class="quantity">{{ $products->quantity }}</td>
-                    <td><a onclick="confirmation(event)" href="{{ route('admin.delete_product', $products->id) }}"
+                    <td><a href="{{ route('admin.edit_product', base64_encode($products->id)) }}"
+                            class="btn btn-success"><i class="fa-regular fa-edit"></i></a>
+                        <a onclick="confirmation(event)"
+                            href="{{ route('admin.delete_product', base64_encode($products->id)) }}"
                             class="btn btn-danger"><i class="fa-regular fa-trash-can"></i></a>
+
                     </td>
                 </tr>
             @endforeach
+
         </tbody>
     </table>
     <div class="pagination mt-5">

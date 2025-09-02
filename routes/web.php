@@ -6,9 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'login_user'])->name('login_user')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,3 +35,9 @@ Route::post('admin/upload_product', [AdminController::class, 'upload_product'])-
 Route::get('admin/view_product', [AdminController::class, 'view_product'])->name('admin.view_product')->middleware(['auth', 'admin']);
 
 Route::get('admin/delete_product/{id}', [AdminController::class, 'delete_product'])->name('admin.delete_product')->middleware(['auth', 'admin']);
+
+Route::get('admin/edit_product/{id}', [AdminController::class, 'edit_product'])->name('admin.edit_product')->middleware(['auth', 'admin']);
+
+Route::post('admin/update_product/{id}', [AdminController::class, 'update_product'])->name('admin.update_product')->middleware(['auth', 'admin']);
+
+Route::get('admin/search_product', [AdminController::class, 'search_product'])->name('admin.search_product')->middleware(['auth', 'admin']);
