@@ -80,6 +80,7 @@ class AdminController extends Controller
 
     public function delete_product($id)
     {
+        $id = base64_decode($id);
         $product = Product::find($id);
         $image_path = public_path('products/' . $product->image);
         if (file_exists($image_path)) {
@@ -88,5 +89,44 @@ class AdminController extends Controller
         $product->delete();
 
         return redirect()->back();
+    }
+
+    public function edit_product($id)
+    {
+        $id = base64_decode($id);
+        $product = Product::find($id);
+        $categories = Category::all();
+        return view('admin.edit-product', compact('product', 'categories'));
+    }
+
+    public function update_product(Request $request, $id)
+    {
+        $id = base64_decode($id);
+        $product = Product::find($id);
+        $product->title = $request->product_title;
+        $product->description = $request->product_description;
+        $product->price = $request->product_price;
+        $product->category = $request->product_category;
+        $product->quantity = $request->product_quantity;
+
+        $image = $request->product_image;
+        if ($image) {
+            $imagename = time() . '.' . $image->getClientOriginalExtension();
+            $request->product_image->move('products/', $imagename);
+            $product->image = $imagename;
+        }
+
+        $product->save();
+
+        return redirect()->route('admin.view_product');
+    }
+
+    public function search_product(Request $request)
+    {
+        $search = $request->search_product;
+        $product = Product::where('title', 'LIKE', '%' . $search . '%')
+            ->orWhere('category', 'LIKE', '%' . $search . '%')
+            ->paginate(10);
+        return view('admin.view_product', compact('product'));
     }
 }

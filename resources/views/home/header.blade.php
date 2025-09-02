@@ -35,26 +35,30 @@
                 </li>
             </ul>
             <div class="user_option">
-                <a href="{{ url('/login') }}">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span>
-                        Login
-                    </span>
-                </a>
-                <a href="{{ url('/register') }}">
-                    <i class="fa fa-address-card" aria-hidden="true"></i>
-                    <span>
-                        Register
-                    </span>
-                </a>
-                <a href="">
-                    <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                </a>
-                <form class="form-inline ">
-                    <button class="btn nav_search-btn" type="submit">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                    </button>
-                </form>
+                @if (Route::has('login'))
+                    @auth
+                        <a href="">
+                            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+                        </a>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <input type="submit" value="Logout" class="btn btn-outline-danger">
+                        </form>
+                    @else
+                        <a href="{{ url('/login') }}">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span>
+                                Login
+                            </span>
+                        </a>
+                        <a href="{{ url('/register') }}">
+                            <i class="fa fa-address-card" aria-hidden="true"></i>
+                            <span>
+                                Register
+                            </span>
+                        </a>
+                    @endauth
+                @endif
             </div>
         </div>
     </nav>

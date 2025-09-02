@@ -105,6 +105,9 @@ td {
 .product-table .image {
     width: 8%;
 }
+.product-table .actions {
+    width: 12%;
+}
 .pagination {
     justify-content: center;
 }
