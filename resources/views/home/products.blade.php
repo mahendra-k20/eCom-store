@@ -9,27 +9,34 @@
             @foreach ($products as $product)
                 <div class="col-sm-6 col-md-4 col-lg-3">
                     <div class="box">
-                        <a href="">
-                            <div class="img-box">
-                                <img src="/products/{{ $product->image }}" alt="">
-                            </div>
-                            <div class="detail-box">
-                                <h6 class="mr-3">
+                        <div class="img-box">
+                            <img src="/products/{{ $product->image }}" alt="">
+                        </div>
+                        <div class="detail-box">
+                            <h6 class="mr-3">
+                                <a href="{{ route('product_details', base64_encode($product->id)) }}">
                                     {{ $product->title }}
-                                </h6>
-                                <h6>
-                                    Price
-                                    <span>
-                                        ₹{{ $product->price }}
-                                    </span>
-                                </h6>
-                            </div>
-                            <div class="new">
+                                </a>
+                            </h6>
+                            <h6>
+                                Price
                                 <span>
-                                    {!! Str::limit($product->category, 3) !!}
+                                    ₹{{ $product->price }}
                                 </span>
-                            </div>
-                        </a>
+                            </h6>
+                        </div>
+                        <div class="product-details my-4 d-flex">
+                            <a href="{{ route('product_details', base64_encode($product->id)) }}"
+                                class="btn btn-danger text-white">Details</a>
+                            <a href="{{ route('add_cart', $product->id) }}" class="btn btn-primary text-white ml-4">Add
+                                to Cart</a>
+                        </div>
+                        <div class="new">
+                            <span>
+                                {{-- {!! Str::limit($product->category, 3) !!} --}}
+                                new
+                            </span>
+                        </div>
                     </div>
                 </div>
             @endforeach
