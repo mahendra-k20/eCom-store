@@ -24,3 +24,5 @@
  <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
  <!-- responsive style -->
  <link href="{{ asset('css/responsive.css') }}" rel="stylesheet" />
+ <!-- Custom CSS-->
+ <link rel="stylesheet" href="{{ asset('/css/custom.css') }}">

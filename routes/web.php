@@ -6,7 +6,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home'])->name('home');
-Route::get('/dashboard', [HomeController::class, 'login_user'])->name('login_user')->middleware(['auth', 'verified']);
+Route::get('dashboard', [HomeController::class, 'login_user'])->name('login_user')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,3 +41,7 @@ Route::get('admin/edit_product/{id}', [AdminController::class, 'edit_product'])-
 Route::post('admin/update_product/{id}', [AdminController::class, 'update_product'])->name('admin.update_product')->middleware(['auth', 'admin']);
 
 Route::get('admin/search_product', [AdminController::class, 'search_product'])->name('admin.search_product')->middleware(['auth', 'admin']);
+
+Route::get('product_details/{id}', [HomeController::class, 'product_details'])->name('product_details');
+
+Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->name('add_cart')->middleware(['auth', 'verified']);
