@@ -45,3 +45,11 @@ Route::get('admin/search_product', [AdminController::class, 'search_product'])->
 Route::get('product_details/{id}', [HomeController::class, 'product_details'])->name('product_details');
 
 Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])->name('add_cart')->middleware(['auth', 'verified']);
+
+Route::get('cart', [HomeController::class, 'cart'])->name('cart')->middleware(['auth', 'verified']);
+
+Route::get('remove_product/{id}', [HomeController::class, 'remove_product'])->name('remove_product')->middleware(['auth', 'verified']);
+
+Route::post('confirm_order', [HomeController::class, 'confirm_order'])->name('confirm_order')->middleware(['auth', 'verified']);
+
+Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout')->middleware(['auth', 'verified']);
