@@ -13,9 +13,9 @@
         </div>
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <div class="navbar-header">
-                <!-- Navbar Header--><a href="{{ route('admin.dashboard') }}" class="navbar-brand">
+                <!-- Navbar Header--><a href="{{ route('home') }}" class="navbar-brand">
                     <div class="brand-text brand-big visible text-uppercase"><strong
-                            class="text-primary">Dark</strong><strong>Admin</strong></div>
+                            class="text-primary">Giraffe</strong><strong>Assoc.</strong></div>
                     <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div>
                 </a>
                 <!-- Sidebar Toggle Btn-->
@@ -24,7 +24,7 @@
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
 
-                <input type="submit" value="Logout">
+                <input type="submit" class="btn btn-outline-primary" value="Logout">
             </form>
 
         </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -129,4 +131,36 @@ class AdminController extends Controller
             ->paginate(10);
         return view('admin.view_product', compact('product'));
     }
+
+    public function view_orders()
+    {
+        $orders = Order::all();
+        return view('admin.orders', compact('orders'));
+    }
+
+    public function in_transit($id)
+    {
+        $status = Order::find($id);
+        $status->status = 'In Transit';
+        $status->save();
+
+        return redirect()->route('admin.orders');
+    }
+
+    public function completed($id)
+    {
+        $status = Order::find($id);
+        $status->status = 'Completed';
+        $status->save();
+
+        return redirect()->route('admin.orders');
+    }
+
+    public function print_pdf($id)
+    {
+        $order = Order::find($id);
+        $pdf = Pdf::loadView('admin.invoice', compact('order'));
+        return $pdf->download('invoice.pdf');
+    }
+    
 }

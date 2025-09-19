@@ -20,5 +20,6 @@
                 <li><a href="{{ route('admin.view_product') }}">View Produts</a></li>
             </ul>
         </li>
+        <li><a href="{{ route('admin.orders') }}"> <i class="icon-grid"></i>Orders </a></li>
     </ul>
 </nav>

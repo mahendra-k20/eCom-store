@@ -13,7 +13,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $users = User::where('usertype', 'user')->get()->count();
+        $products = Product::all()->count();
+        $orders = Order::all()->count();
+        $completed_orders = Order::where('status', 'Completed')->get()->count();
+        return view('admin.index', compact('users', 'products', 'orders', 'completed_orders'));
     }
 
     public function home()
@@ -133,5 +137,25 @@ class HomeController extends Controller
         }
 
         return view('home.checkout', compact('count', 'carts'));
+    }
+
+    public function my_orders()
+    {
+        if (Auth::id()) {
+            $user = Auth::user();
+            $user_id = $user->id;
+            $count = Cart::where('user_id', $user_id)->count();
+            $orders = Order::where('user_id', $user_id)->get();
+        } else {
+            $count = '';
+        }
+        return view('home.my-orders', compact('count', 'orders'));
+    }
+
+    public function print_pdf($id)
+    {
+        $order = Order::find($id);
+        $pdf = Pdf::loadView('admin.invoice', compact('order'));
+        return $pdf->download('invoice.pdf');
     }
 }
