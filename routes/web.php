@@ -53,3 +53,15 @@ Route::get('remove_product/{id}', [HomeController::class, 'remove_product'])->na
 Route::post('confirm_order', [HomeController::class, 'confirm_order'])->name('confirm_order')->middleware(['auth', 'verified']);
 
 Route::get('checkout', [HomeController::class, 'checkout'])->name('checkout')->middleware(['auth', 'verified']);
+
+Route::get('admin/view_orders', [AdminController::class, 'view_orders'])->name('admin.orders')->middleware(['auth', 'admin']);
+
+Route::get('admin/in_transit/{id}', [AdminController::class, 'in_transit'])->name('admin.in_transit')->middleware(['auth', 'admin']);
+
+Route::get('admin/completed/{id}', [AdminController::class, 'completed'])->name('admin.completed')->middleware(['auth', 'admin']);
+
+Route::get('admin/print_pdf/{id}', [AdminController::class, 'print_pdf'])->name('admin.print_pdf')->middleware(['auth', 'admin']);
+
+Route::get('my-orders', [HomeController::class, 'my_orders'])->name('my-orders')->middleware(['auth', 'verified']);
+
+Route::get('user/print_pdf/{id}', [HomeController::class, 'print_pdf'])->name('user.print_pdf')->middleware(['auth', 'admin']);
